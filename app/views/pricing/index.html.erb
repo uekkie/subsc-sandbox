@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="has-text-centered box">
+    <h1 class="title">Pricing</h1>
+    <h2 class="subtitle"></h2>
+    <div class="pricing-table">
+      <div class="pricing-plan is-link is-active">
+        <div class="plan-header"><%= Stripe_plan_name %></div>
+        <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">¥</span>980</span>/月</div>
+        <div class="plan-items">
+          <div class="plan-item">製品つかい放題</div>
+        </div>
+        <div class="plan-footer">
+           <% if user_signed_in? %>
+            <%= link_to 'Subscribe', new_subscription_path(plan: Stripe_plan_name, plan_id: Stripe_plan_id), class:"button is-fullwidth" %>
+          <% else %>
+            <%= link_to 'Subscribe', new_user_registration_path, class: 'button is-fullwidth' %>
+         <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
