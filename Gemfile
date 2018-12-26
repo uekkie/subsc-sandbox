@@ -43,6 +43,7 @@ gem 'bulma-rails'
 gem 'simple_form'
 gem 'stripe', '~> 3.13'
 gem 'rails-i18n'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'better_errors'

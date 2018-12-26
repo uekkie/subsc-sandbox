@@ -1,0 +1,19 @@
+%section.section
+  .has-text-centered.box
+    %h1.title Pricing
+    %h2.subtitle
+    .pricing-table
+      .pricing-plan.is-link.is-active
+        .plan-header= Stripe_plan_name
+        .plan-price
+          %span.plan-price-amount>
+            %span.plan-price-currency> ¥
+            980
+          \/月
+        .plan-items
+          .plan-item 製品つかい放題
+        .plan-footer
+          - if user_signed_in?
+            = link_to 'Subscribe', new_subscription_path(plan: Stripe_plan_name, plan_id: Stripe_plan_id), class:"button is-fullwidth"
+          - else
+            = link_to 'Subscribe', new_user_registration_path, class: 'button is-fullwidth'

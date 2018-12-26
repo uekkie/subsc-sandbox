@@ -1,0 +1,16 @@
+.section
+  .columns
+    .column.is-4
+      = image_tag @book.thumbnail.variant(resize: "320x495"), alt: "#{@book.title} by #{@book.author}"
+    .column
+      %h1.title.is-2
+        = @book.title
+        %h1
+          .content
+            = render 'book-controls', book: @book
+            %p
+              %strong Description:
+            = @book.description
+          - if admin?
+            = link_to 'Edit', edit_book_path(@book)
+            |

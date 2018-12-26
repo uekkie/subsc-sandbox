@@ -1,0 +1,33 @@
+%nav.navbar.is-dark{"aria-label" => "main navigation", :role => "navigation"}
+  .navbar-brand
+    = link_to root_path, class:"navbar-item" do
+      %h1.title.is-5.has-text-white= Rails.configuration.application_name
+    #navbar.navbar-menu
+      .navbar-start
+        - if subscribed?
+          .navbar-item
+            = link_to library_index_path, class: 'navbar-item button is-dark' do
+              %i.fa.fa-user
+                 マイパスポート
+      .navbar-end
+        .navbar-item
+          - if admin?
+            = link_to '新規作成', new_book_path, class:'button is-dark'
+          .field.is-grouped
+            - if user_signed_in?
+              .navbar-item.has-dropdown.is-hoverable
+                = link_to 'ユーザー情報', edit_user_registration_path, class: "navbar-link"
+                .navbar-dropdown.is-right
+                  = link_to edit_user_registration_path, class:"navbar-item" do
+                    = current_user.name
+                    - if admin?
+                       
+                      %span.tag.is-warning 管理者
+                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class:"navbar-item"
+            - else
+              %p.control
+                = link_to '料金', pricing_index_path, class: 'navbar-item button is-dark'
+              %p.control
+                = link_to "ログイン", new_user_session_path, class:"navbar-item button is-dark"
+              %p.control
+                = link_to "ユーザー登録", new_user_registration_path, class:"navbar-item button is-dark"

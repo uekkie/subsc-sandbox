@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= Rails.configuration.application_name
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'https://js.stripe.com/v3/','data-turbolinks-track': 'reload'
+    = tag :meta, name: "stripe-key", content: Stripe_pub_key
+  %body{:class => "#{yield (:body_class)}"}
+    - if flash[:notice]
+      .notification.is-success.global-notification
+        %p.notice= notice
+    - if flash[:alert]
+      .notification.is-danger.global-notification
+        %p.alert= alert
+    = render :partial => "layouts/navigation"
+    .container
+      = yield
