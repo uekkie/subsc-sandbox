@@ -6,7 +6,7 @@ document.addEventListener("turbolinks:load", function() {
     fonts: [{
       cssSrc: "https://rsms.me/inter/inter-ui.css"
     }],
-    locale: "auto"
+    locale: "ja"
   });
 
   const style = {

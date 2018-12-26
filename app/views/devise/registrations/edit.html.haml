@@ -47,8 +47,17 @@
               %footer.card-footer
                 %p.card-footer-item
                   %span
-                    = link_to "サブスクリプションを解約する", subscription_path(current_user), method: :delete, data: { confirm: "解約します。よろしいですか？" }, class: "use-different-card"
+                    = link_to "サブスクリプションを解約する", subscription_path(current_user), method: :delete, class: "use-different-card"
+                    -# , data: { confirm: "解約します。よろしいですか？" }
             - if current_user.subscribed?
             - else
               %p
                 You are not currently subscribed. #{link_to 'Sign up', pricing_index_path}
+        - else
+          .card-on-file
+            %h3.title.is-3 サブスクリプション内容
+            .card.is-3
+              .card-content
+                %p.subtitle
+                  契約中のプランはありません
+            %hr/
