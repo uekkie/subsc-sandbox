@@ -21,10 +21,11 @@ gem 'activerecord-import'
 gem 'ransack'
 gem 'ionicons-rails'
 
+gem 'faker'
+gem 'gimei'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker'
-  gem 'gimei'
 end
 
 group :development do
