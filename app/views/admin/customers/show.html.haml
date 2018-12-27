@@ -21,7 +21,7 @@
                 %p.subtitle
                 %div
                   %ul
-                    - @subscribed_items.each do |item|
+                    - Array(@subscribed_items).each do |item|
                       %li= "#{item.plan.nickname}（#{item.plan.amount}円/月）"
           - else
             .card.is-3
