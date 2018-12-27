@@ -1,0 +1,14 @@
+%ul
+  - @users.each do |user|
+    %li
+      .columns
+        .column.is-1
+          - if user.subscribed?
+            %span.icon.has-text-success
+              %i.icon.ion-beer
+          - else
+            %span.icon
+              %i.icon.ion-beer
+        .column.is-2= link_to user.name, admin_customer_path(user)
+        .column.is-5= user.email
+        .column.is-5= user.created_at

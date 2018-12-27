@@ -9,5 +9,6 @@ module BookLibrary
     config.application_name = 'MyPassport'
     config.load_defaults 5.2
     config.time_zone = 'Asia/Tokyo'
+    config.i18n.default_locale = :ja
   end
 end

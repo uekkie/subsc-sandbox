@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
@@ -17,8 +17,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'rails_12factor', group: :production
 
+gem 'activerecord-import'
+gem 'ransack'
+gem 'ionicons-rails'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker'
+  gem 'gimei'
 end
 
 group :development do

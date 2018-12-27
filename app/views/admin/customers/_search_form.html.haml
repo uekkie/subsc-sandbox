@@ -1,0 +1,15 @@
+-# `form_for`のRansack版
+= search_form_for @search, :url => {:controller => "customers"}do |f|
+  -# nameカラムに対して部分一致検索ができる
+  .field
+    = f.label :name_cont, "ユーザー名を含む", class: "label"
+    .control
+      = f.search_field :name_cont, class: 'input'
+  .field
+    = f.label :email_cont, "メールアドレスを含む", class: "label"
+    .control
+      = f.search_field :email_cont, class: 'input'
+
+  -# 検索ボタン
+  .control
+    .actions= f.submit "検索", class: 'button is-primary'

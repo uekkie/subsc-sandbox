@@ -15,6 +15,7 @@
             = link_to '新規作成', new_book_path, class:'button is-dark'
           .field.is-grouped
             %p.control
+              = link_to 'ユーザー一覧', admin_customers_path, class: 'navbar-item button is-dark'
               = link_to 'プラン', pricing_index_path, class: 'navbar-item button is-dark'
             - if user_signed_in?
               .navbar-item.has-dropdown.is-hoverable
