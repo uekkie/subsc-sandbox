@@ -1,5 +1,5 @@
 
-User.destroy_all
+# User.destroy_all
 
 # Create dummy users
 # Male
