@@ -15,12 +15,9 @@ gem 'mini_magick', '~> 4.8'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'rails_12factor', group: :production
-
 gem 'activerecord-import'
 gem 'ransack'
-gem 'ionicons-rails'
-
+gem "font-awesome-rails"
 gem 'faker'
 gem 'gimei'
 

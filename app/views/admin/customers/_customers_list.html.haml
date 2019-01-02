@@ -5,10 +5,7 @@
         .column.is-1
           - if user.subscribed?
             %span.icon.has-text-info
-              %i.icon.ion-star
-          -# - else
-          -#   %span.icon
-          -#     %i.icon.ion-beer
+              %i.fa.fa-star
         .column.is-2= link_to user.name, admin_customer_path(user)
         .column.is-5= user.email
         .column.is-5= user.created_at
