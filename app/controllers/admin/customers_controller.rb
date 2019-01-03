@@ -1,8 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    # 検索オブジェクト
     @search = User.ransack(params[:q])
-    # 検索結果
     @users = @search.result
   end
 

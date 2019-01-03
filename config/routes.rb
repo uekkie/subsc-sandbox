@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   namespace :admin do
-    resources :customers
+    resources :customers, only: %i(index show)
   end
 
+  resources :library, only:[:index]
   resources :pricing, only:[:index]
-  resources :subscriptions
+  resources :subscriptions, only: %i(new create destroy)
 end
