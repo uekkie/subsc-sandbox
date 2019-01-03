@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers
   end
-  
-  resources :library, only:[:index]
+
   resources :pricing, only:[:index]
   resources :subscriptions
 end
