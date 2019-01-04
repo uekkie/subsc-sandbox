@@ -1,4 +1,7 @@
 ja:
+  views:
+    users:
+      index: ユーザー
   activerecord:
     attributes:
       user:

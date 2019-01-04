@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
   def index
     @search = User.ransack(params[:q])
-    @users = @search.result
+    @users = @search.result.page(params[:page])
   end
 
   def show

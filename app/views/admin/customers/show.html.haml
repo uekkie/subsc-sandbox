@@ -5,7 +5,7 @@
       .column
         %nav.breadcrumb
           %ul
-            %li= link_to "ユーザー一覧", admin_customers_path
+            %li= link_to t("views.users.index"), admin_customers_path
             %li.is-active= @user.name
     .columns
       .column.is-4
@@ -31,6 +31,6 @@
 %section.section
   %nav.breadcrumb
     %ul
-      %li= link_to "ユーザー一覧", admin_customers_path
+      %li= link_to t('views.users.index'), admin_customers_path
       %li.is-active= @user.name
   

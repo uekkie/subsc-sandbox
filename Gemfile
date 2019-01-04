@@ -20,6 +20,7 @@ gem 'ransack'
 gem "font-awesome-rails"
 gem 'faker'
 gem 'gimei'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -32,6 +33,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'binding_of_caller'
 end
 
 group :test do
