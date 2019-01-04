@@ -33,7 +33,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'hirb'
   gem 'hirb-unicode'
-  gem 'binding_of_caller'
 end
 
 group :test do
@@ -53,6 +52,7 @@ gem 'haml-rails'
 
 group :development, :test do
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'guard'
   gem 'guard-livereload'
 end
