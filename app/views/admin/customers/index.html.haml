@@ -1,4 +1,6 @@
 .section
   = render "search_form"
   %hr
+  = paginate @users
   = render "customers_list", users: @users
+  = paginate @users
