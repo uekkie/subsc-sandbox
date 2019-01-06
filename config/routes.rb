@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'books#index'
+  root to: 'subscriptions#index'
 
   devise_for :users, controllers: { registrations: "registrations" }
 
@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :customers, only: %i(index show)
   end
 
-  resources :library, only:[:index]
   resources :pricing, only:[:index]
-  resources :subscriptions, only: %i(new create destroy)
+  resources :subscriptions, only: %i(index new create destroy)
 end

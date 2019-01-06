@@ -4,7 +4,7 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
-module BookLibrary
+module AccountService
   class Application < Rails::Application
     config.application_name = 'MyPassport'
     config.load_defaults 5.2

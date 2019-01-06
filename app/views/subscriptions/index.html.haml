@@ -1,0 +1,16 @@
+%section.hero
+  .hero-body
+    .container.has-text-centered
+      - if user_signed_in?
+        %h1.title
+          %i.fa.fa-user= "#{current_user.name} 様"
+        - if @plan
+          = link_to "#{@plan.nickname}（#{@plan.amount}円/月）", edit_user_registration_path, class: "is-link"
+      - else
+        %h1.title
+          %i.fa.fa-user
+          マイパスポート
+        %h2.subtitle
+          = link_to "ユーザー登録", new_user_registration_path
+          をしてつかい始めましょう
+

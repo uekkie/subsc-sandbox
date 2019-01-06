@@ -6,13 +6,11 @@
       .navbar-start
         - if subscribed?
           .navbar-item
-            = link_to library_index_path, class: 'navbar-item button is-dark' do
+            = link_to subscriptions_path, class: 'navbar-item button is-dark' do
               %i.fa.fa-user
                  マイパスポート
       .navbar-end
         .navbar-item
-          - if admin?
-            = link_to '新規作成', new_book_path, class:'button is-dark'
           .field.is-grouped
             %p.control
               = link_to 'ユーザー一覧', admin_customers_path, class: 'navbar-item button is-dark'
