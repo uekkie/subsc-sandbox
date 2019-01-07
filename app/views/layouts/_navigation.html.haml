@@ -13,7 +13,8 @@
         .navbar-item
           .field.is-grouped
             %p.control
-              = link_to t('views.users.index'), admin_customers_path, class: 'navbar-item button is-dark'
+              - if admin?
+                = link_to t('views.users.index'), admin_customers_path, class: 'navbar-item button is-dark'
               = link_to 'プラン', pricing_index_path, class: 'navbar-item button is-dark'
             - if user_signed_in?
               .navbar-item.has-dropdown.is-hoverable
