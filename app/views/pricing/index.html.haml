@@ -8,10 +8,10 @@
         .plan-price
           %span.plan-price-amount>
             %span.plan-price-currency> ¥
-            980
+            300
           \/月
         .plan-items
-          .plan-item 製品つかい放題
+          .plan-item= "#{Stripe_plan_name} サービスが受けられます。"
         .plan-footer
           - if user_signed_in?
             = link_to 'Subscribe', new_subscription_path(plan: Stripe_plan_name, plan_id: Stripe_plan_id), class:"button is-fullwidth"

@@ -3,7 +3,7 @@ class SubscriptionsController < ApplicationController
   before_action :authenticate_user!, except: %i(index new create)
 
   def index
-    if current_user then
+    if user_signed_in? && current_user.stripe_id then
       customer = Stripe::Customer.retrieve(current_user.stripe_id)
       subscription = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
       @plan = subscription.items.data.first.plan
