@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_23_235417) do
+ActiveRecord::Schema.define(version: 2019_01_08_063703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2018_04_23_235417) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2018_04_23_235417) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "api_keys", force: :cascade do |t|
+    t.string "access_token", null: false
+    t.integer "user_id", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
