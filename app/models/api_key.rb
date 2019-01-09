@@ -1,5 +1,4 @@
 class ApiKey < ApplicationRecord
-  # attr_accessor :access_token, :expires_at, :user_id, :active, :application
   before_validation :generate_access_token
   before_validation :set_expiration
   belongs_to :user
