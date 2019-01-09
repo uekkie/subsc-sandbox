@@ -9,4 +9,10 @@ Rails.application.routes.draw do
 
   resources :pricing, only:[:index]
   resources :subscriptions, only: %i(index new create destroy)
+
+  # API
+  mount API::Root => '/'
+  mount GrapeSwaggerRails::Engine => '/swagger'
+
+  
 end
