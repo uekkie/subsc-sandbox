@@ -1,4 +1,4 @@
-module ApiKey
+module API
   class Auth < Grape::API
     version 'v1'
     format :json
