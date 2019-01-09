@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :subscriptions, only: %i(index new create destroy)
 
   # API
-  mount API::Root => '/api'
+  mount API::Root => '/'
   mount GrapeSwaggerRails::Engine => '/swagger'
 
   
