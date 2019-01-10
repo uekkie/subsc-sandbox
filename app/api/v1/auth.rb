@@ -18,6 +18,12 @@ module V1
         end
 
         if user && user.authenticate(params[:password])
+          key = ApiKey.where(user_id: user.id).order(created_at: :desc).take
+          if key.nil? || key.expired? then
+            key = ApiKey.create(user_id: user.id)
+          end
+          return {token: key.access_token} unless key&.expired?
+
           key = ApiKey.create(user_id: user.id)
           {token: key.access_token}
         else
