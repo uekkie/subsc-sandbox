@@ -50,6 +50,14 @@ gem 'stripe', '~> 3.13'
 gem 'rails-i18n'
 gem 'haml-rails'
 
+# api
+gem 'grape'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
+gem 'grape-entity'
+gem 'api-pagination'
+gem 'ruby-swagger'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
