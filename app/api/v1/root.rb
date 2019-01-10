@@ -10,6 +10,7 @@ module V1
 
     # Each APIs
     mount V1::Users
+    mount V1::Auth
 
     # swagger doc
     add_swagger_documentation(

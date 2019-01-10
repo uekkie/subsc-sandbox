@@ -7,4 +7,8 @@ class User < ApplicationRecord
   def subscribed?
     stripe_subscription_id?
   end
+
+  def authenticate(password)
+    self.valid_password?(password)
+  end
 end

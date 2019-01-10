@@ -1,14 +1,9 @@
-module API
+module V1
   class Auth < Grape::API
-    version 'v1'
-    format :json
-
-    # resource 'auth', desc: '認証', swagger: {nested: false } do
-    # end
-
+    helpers RequestHelper
     resource :auth, desc: 'auth', swagger: {nested: false} do
 
-      # /api/auth
+      # POST /v1/auth
       desc "Creates and returns access_token if valid login"
       params do
         requires :login, type: String, desc: "Username or email address"
@@ -19,7 +14,7 @@ module API
         if params[:login].include?("@")
           user = User.find_by_email(params[:login].downcase)
         else
-          user = User.find_by_login(params[:login].downcase)
+          user = User.find_by_name(params[:login].downcase)
         end
 
         if user && user.authenticate(params[:password])
@@ -30,10 +25,8 @@ module API
         end
       end
 
+      # GET /v1/ping
       desc "Returns pong if logged in correctly"
-      params do
-        requires :token, type: String, desc: "Access token."
-      end
       get :ping do
         authenticate!
         { message: "pong" }
