@@ -1,0 +1,17 @@
+%section.hero
+  .hero-body
+    .container.has-text-centered
+      %article.message.is-info
+        .message-header
+          %i.fa.fa-user= "#{current_user.name} 様"
+        .message-body
+          = "#{@plan.nickname}（#{@plan.amount}円/月）"
+          .start_at
+            開始：
+            = l(Time.at(@subscription.current_period_start), format: :long)
+          .end_at
+            終了：
+            = l(Time.at(@subscription.current_period_end), format: :long)
+          .action
+            %p メンバーシップの再開はいつでもおこなえます。
+            = link_to "自動継続を停止する", subscription_path(current_user), data: {confirm: '自動継続を停止します。よろしいですか？'}, method: :delete, class: "button is-danger"

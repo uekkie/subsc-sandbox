@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :pricing, only:[:index]
-  resources :subscriptions, only: %i(index new create destroy)
+  resources :subscriptions, only: %i(index new create destroy) do
+    get 'status', on: :collection
+  end
 
   # API
   mount API::Root => '/'

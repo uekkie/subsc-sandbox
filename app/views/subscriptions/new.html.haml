@@ -1,18 +1,17 @@
 .section
   .columns.is-centered
     .column.is-6.border.pa5
-      %h1.title.is-3 Subscribe
+      %h1.title.is-3 メンバーシップの開始
       %hr/
       %p
         選択したプラン:
         %strong
-          = params[:plan]
+          = @plan_nickname
           %hr/
           = form_tag subscriptions_path, id: "payment-form" do |form|
             .field
               %label.label{:for => "card-element"} クレジットカード番号を入力
               #card-element
-                / A Stripe element will be intserted here !
               #card-errors{:role => "alert"}
-              = hidden_field_tag :plan_id, params[:plan_id]
-              %button.button.is-fullwidth.is-link.mt4 Submit
+              = hidden_field_tag :plan_id, @plan_id
+              %button.button.is-fullwidth.is-link.mt4 メンバーシップを開始する
