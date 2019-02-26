@@ -1,19 +1,13 @@
 class SubscriptionsController < ApplicationController
   layout "subscribe"
   before_action :authenticate_user!, except: %i(index new create)
+  before_action :check_subscriber, only: %i(new)
+  before_action :set_customer, only: %i(index)
 
   def index
-    if user_signed_in? && current_user.stripe_id then
-      customer = Stripe::Customer.retrieve(current_user.stripe_id)
-      subscription = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
-      @plan = subscription.items.data.first.plan
-    end
   end
 
   def new
-    if user_signed_in? && current_user.subscribed?
-      redirect_to root_path, notice: "You are already a subscriber"
-    end
   end
 
   def create
@@ -54,5 +48,19 @@ class SubscriptionsController < ApplicationController
     current_user.subscribed = false
 
     redirect_to root_path, notice: "Your subscription has been cancelled."
+  end
+
+private
+  def set_customer
+    if user_signed_in? && current_user.stripe_id then
+      customer = Stripe::Customer.retrieve(current_user.stripe_id)
+      subscription = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
+      @plan = subscription.items.data.first.plan
+    end
+  end
+  def check_subscriber
+    if current_user.subscribed?
+      redirect_to root_path, notice: "You are already a subscriber"
+    end
   end
 end
