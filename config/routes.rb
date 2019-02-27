@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: 'subscriptions#index'
 
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: {
+     registrations: "registrations" 
+  }
 
   namespace :admin do
     resources :customers, only: %i(index show)
@@ -16,5 +18,4 @@ Rails.application.routes.draw do
   mount API::Root => '/'
   mount GrapeSwaggerRails::Engine => '/swagger'
 
-  
 end

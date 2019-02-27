@@ -1,0 +1,38 @@
+module V1
+  class Customers < Grape::API
+    resource :customers, desc: 'customers', swagger: {nested: false} do
+      helpers do
+        def user_params
+          ActionController::Parameters.new(params).permit(:name, :email, :password)
+        end
+      end
+      desc "Creates customer"
+      params do
+        requires :name, type: String, desc: "Username"
+        requires :email, type: String, desc: "Email"
+        requires :password, type: String, desc: "Password"
+      end
+      
+      post do
+        user = User.find_by_email(params[:email])
+        # binding.pry
+        if user
+          return {
+            status: 400, 
+            user: user, 
+            message: 'Emailアドレスはすでに登録されています'
+          }
+        end
+
+        user = User.new(user_params)
+        # binding.pry
+        if user.save
+          { 
+            status: :created,
+            user: user
+          }
+        end
+      end
+    end
+  end
+end
