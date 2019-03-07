@@ -16,13 +16,11 @@ module V1
       post do
         user = User.find_by_email(params[:email])
         # binding.pry
-        if user
-          return {
-            status: 400, 
-            user: user, 
-            message: 'Emailアドレスはすでに登録されています'
-          }
-        end
+        return {
+          status: 400,
+          user: user,
+          message: 'Emailアドレスはすでに登録されています'
+        } if user
 
         user = User.new(user_params)
         # binding.pry

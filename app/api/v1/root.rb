@@ -12,6 +12,7 @@ module V1
     mount V1::Users
     mount V1::Auth
     mount V1::Customers
+    mount V1::Subscriptions
 
     # swagger doc
     add_swagger_documentation(
