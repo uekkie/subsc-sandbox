@@ -1,4 +1,32 @@
 module V1
+  class Spoffer
+# ・BASE64エンコードする    27764 -> "Mjc3NjQ="
+# ・バイト列にする       => [77, 106, 99, 51, 78, 106, 81, 61]
+# ・16進数コード表現に変換   "4D6A63334E6A513D"
+# ・暗号化文字列の中央に挿入  "46634653D1AE33AD"
+# "46634653D1AE33AD"  "27764"
+    def enc(str)
+      left=[]
+      right=[]
+      base64_hexies = Base64.encode64(str).chomp.unpack('H*').first.upcase.split(//)
+      until base64_hexies.empty? do
+        left.push     base64_hexies.shift
+        right.unshift base64_hexies.shift
+      end
+      (left << right).join
+    end
+
+    def dec(str)
+      chars = str.split(//)
+      base64ed=""
+      until chars.empty? do
+        # 2文字区切りで16進から文字に変換
+        base64ed << (chars.shift + chars.pop).hex.chr
+      end
+      Base64.decode64(base64ed)
+    end
+  end
+
   class Subscriptions < Grape::API
     content_type :xml, 'application/xml'
     formatter :xml, Proc.new { |object|
@@ -17,36 +45,27 @@ module V1
       end
 
       get do
-        source = <<EOF
-<?xml version="1.0"?> 
+        user = User.find_by_email(params[:email])
+        return spoffer= {
+          spoffer:{}
+        } unless user
 
-<spoffer>
-<item>
-<long>46634653D1AE33AD</long>
-         <bool>45474533DD1E714D</bool>
-<short/>
-<byte>4647443747374633DD7E789D783F81AD</byte>
-         <float>4533DD1D</float>
-<single>4547714D</single>
-         <word>4647473747374533DD1DA89D789D91AD</word>
-<double/>
-<real>46474433DD1F81AD</real>
-     </item>
-</spoffer>
-EOF
-
+        conv = Spoffer.new
+        started_at = "2019/03/09"
+        expired_at = "2019/04/10"
         spoffer= {
           spoffer:{
             item: {
-              long: "46634653D1AE33AD",
-              bool:"45474533DD1E714D",
+              long: conv.enc("27764"),
+              char: conv.enc(user.name),
+              byte: conv.enc(started_at),
+              float: conv.enc("1"),
+              bool: conv.enc("2001"),
+              single: conv.enc("110"),
               short: "",
-              byte: "4647443747374633DD7E789D783F81AD",
-              float: "4533DD1D",
-              single: "4547714D",
-              word: "4647473747374533DD1DA89D789D91AD",
+              word: conv.enc(expired_at),
               double: "",
-              real: "46474433DD1F81AD"
+              real: conv.enc("1")
             }
           }
         }
