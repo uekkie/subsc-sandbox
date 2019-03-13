@@ -50,7 +50,6 @@ class ContractsController < ApplicationController
   end
   def validates_customer
     redirect_to pricing_index_url, alert: '無効な顧客IDです' unless @user
-    # redirect_to pricing_index_url, alert: '無効な顧客IDです' unless @user.try(:stripe_id)
   end
   def set_user
     @user = User.find(params[:user_id])
