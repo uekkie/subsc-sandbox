@@ -13,7 +13,11 @@ class ContractsController < ApplicationController
     plan = Stripe::Plan.retrieve(plan_id)
     token = params[:stripeToken]
 
-    customer = Stripe::Customer.retrieve(@user.stripe_id)
+    customer = if @user.stripe_id?
+                 Stripe::Customer.retrieve(@user.stripe_id)
+               else
+                 Stripe::Customer.create(email: @user.email, source: token)
+               end
     subscription = customer.subscriptions.create(plan: plan.id)
 
     options = {
@@ -45,9 +49,10 @@ class ContractsController < ApplicationController
     @user = User.find_by_email("#{params[:id]}@aok.com")
   end
   def validates_customer
-    redirect_to pricing_index_url, alert: '無効な顧客IDです' unless @user.try(:stripe_id)
+    redirect_to pricing_index_url, alert: '無効な顧客IDです' unless @user
+    # redirect_to pricing_index_url, alert: '無効な顧客IDです' unless @user.try(:stripe_id)
   end
   def set_user
-    @user = User.find_by_stripe_id!(params[:customer_id])
+    @user = User.find(params[:user_id])
   end
 end

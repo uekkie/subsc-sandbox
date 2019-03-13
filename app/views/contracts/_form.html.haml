@@ -15,5 +15,5 @@
             #card-element
             #card-errors{:role => "alert"}
             = hidden_field_tag :plan_id, @plan.id
-            = hidden_field_tag :customer_id, @user.stripe_id
+            = hidden_field_tag :user_id, @user.id
             %button.button.is-fullwidth.is-link.mt4 メンバーシップを開始する
