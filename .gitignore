@@ -31,3 +31,4 @@
 vendor/bundle
 .vscode
 .idea
+.env

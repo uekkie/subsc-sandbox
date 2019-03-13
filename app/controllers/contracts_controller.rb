@@ -4,7 +4,7 @@ class ContractsController < ApplicationController
   before_action :set_user, only: %i(create)
 
   def edit
-    plans = Stripe::Plan.list( product: ENV['STRIPE_AOK_CLOUD_PRODID'] )[:data]
+    plans = Stripe::Plan.list( product: ENV['STRIPE_AOK_CLOUD_PRODUCT_ID'] )[:data]
     @plan = plans.first
   end
 
