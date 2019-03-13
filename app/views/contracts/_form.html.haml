@@ -1,0 +1,19 @@
+.section
+  .columns.is-centered
+    .column.is-6.border.pa5
+      %h1.title.is-3 メンバーシップの開始
+      %hr/
+      %p
+        選択したプラン:
+        %strong= @plan.nickname
+        %br/
+        = "月額利用料は、#{@plan.amount}円です。"
+        %hr/
+        = form_tag contracts_path, id: "payment-form" do |form|
+          .field
+            %label.label{:for => "card-element"} クレジットカード番号を入力
+            #card-element
+            #card-errors{:role => "alert"}
+            = hidden_field_tag :plan_id, @plan.id
+            = hidden_field_tag :customer_id, @user.stripe_id
+            %button.button.is-fullwidth.is-link.mt4 メンバーシップを開始する

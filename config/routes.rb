@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     get 'status', on: :collection
   end
 
+  resources :contracts do
+    get 'thanks', on: :collection
+  end
+
   # API
   mount API::Root => '/'
   mount GrapeSwaggerRails::Engine => '/swagger'
