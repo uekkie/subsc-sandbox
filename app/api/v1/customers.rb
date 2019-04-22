@@ -15,7 +15,7 @@ module V1
       
       post do
         email = params[:email]
-        user = User.find_by_email(email)
+        user = User.find_by(email: email)
         return {
           status: 400,
           user: user,

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get 'status', on: :collection
   end
 
-  resources :contracts do
+  resources :contracts, only: %i(create edit destroy) do
     get 'thanks', on: :collection
   end
 

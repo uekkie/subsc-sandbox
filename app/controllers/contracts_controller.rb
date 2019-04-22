@@ -46,7 +46,7 @@ class ContractsController < ApplicationController
 
   private
   def set_user_by_email
-    @user = User.find_by_email("#{params[:id]}@aok.com")
+    @user = User.find_by(emai: "#{params[:id]}@aok.com")
   end
   def validates_customer
     redirect_to pricing_index_url, alert: '無効な顧客IDです' unless @user
