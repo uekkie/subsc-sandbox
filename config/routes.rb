@@ -6,15 +6,15 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :customers, only: %i(index show)
+    resources :customers, only: %i[index show]
   end
 
   resources :pricing, only:[:index]
-  resources :subscriptions, only: %i(index new create destroy) do
+  resources :subscriptions, only: %i[index new create destroy] do
     get 'status', on: :collection
   end
 
-  resources :contracts, only: %i(create edit destroy) do
+  resources :contracts, only: %i[create edit destroy] do
     get 'thanks', on: :collection
   end
 

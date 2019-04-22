@@ -1,9 +1,9 @@
 class SubscriptionsController < ApplicationController
   layout "subscribe"
   before_action :authenticate_user!
-  before_action :check_subscriber, only: %i(new)
-  before_action :set_plan, only: %i(new)
-  before_action :set_customer, only: %i(index status)
+  before_action :check_subscriber, only: %i[new]
+  before_action :set_plan, only: %i[new]
+  before_action :set_customer, only: %i[index status]
 
   def index
   end

@@ -1,7 +1,7 @@
 class ContractsController < ApplicationController
-  before_action :set_user_by_email, only: %i(edit)
-  before_action :validates_customer, only: %i(edit)
-  before_action :set_user, only: %i(create)
+  before_action :set_user_by_email, only: %i[edit]
+  before_action :validates_customer, only: %i[edit]
+  before_action :set_user, only: %i[create]
 
   def edit
     plans = Stripe::Plan.list( product: ENV['STRIPE_AOK_CLOUD_PRODUCT_ID'] )[:data]
