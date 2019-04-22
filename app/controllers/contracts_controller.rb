@@ -26,12 +26,14 @@ class ContractsController < ApplicationController
       subscribed: true
     }
 
-    options.merge!(
-      card_last4: params[:user][:card_last4],
-      card_exp_month: params[:user][:card_exp_month],
-      card_exp_year: params[:user][:card_exp_year],
-      card_type: params[:user][:card_type]
-    ) if params[:user][:card_last4]
+    if params[:user][:card_last4]
+      options.merge!(
+        card_last4: params[:user][:card_last4],
+        card_exp_month: params[:user][:card_exp_month],
+        card_exp_year: params[:user][:card_exp_year],
+        card_type: params[:user][:card_type]
+      )
+    end
 
     @user.update(options)
 
