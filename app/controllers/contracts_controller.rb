@@ -35,7 +35,7 @@ class ContractsController < ApplicationController
 
     @user.update(options)
 
-    redirect_to thanks_contracts_url, notice: "メンバーシップが開始されました"
+    redirect_to thanks_contracts_url, notice: 'メンバーシップが開始されました'
   end
 
   def destroy; end
