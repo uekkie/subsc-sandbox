@@ -38,11 +38,9 @@ class ContractsController < ApplicationController
     redirect_to thanks_contracts_url, notice: "メンバーシップが開始されました"
   end
 
-  def destroy
-  end
+  def destroy; end
 
-  def thanks
-  end
+  def thanks; end
 
   private
 
