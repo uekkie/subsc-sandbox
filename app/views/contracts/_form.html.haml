@@ -11,9 +11,9 @@
         %hr/
         = form_tag contracts_path, id: "payment-form" do |form|
           .field
-            %label.label{:for => "card-element"} クレジットカード番号を入力
+            %label.label{ :for => "card-element" } クレジットカード番号を入力
             #card-element
-            #card-errors{:role => "alert"}
-            = hidden_field_tag :plan_id, @plan.id
-            = hidden_field_tag :user_id, @user.id
+            #card-errors{ :role => "alert" }
+            = hidden_field_tag :plan_id, plan_id
+            = hidden_field_tag :user_id, user_id
             %button.button.is-fullwidth.is-link.mt4 メンバーシップを開始する
