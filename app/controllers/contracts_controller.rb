@@ -45,6 +45,7 @@ class ContractsController < ApplicationController
   end
 
   private
+
   def set_user_by_email
     @user = User.find_by(emai: "#{params[:id]}@aok.com")
   end
