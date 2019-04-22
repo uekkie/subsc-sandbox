@@ -14,8 +14,8 @@ module V1
       end
       
       post do
-        user = User.find_by_email(params[:email])
-        # binding.pry
+        email = params[:email]
+        user = User.find_by(email: email)
         return {
           status: 400,
           user: user,
@@ -23,7 +23,6 @@ module V1
         } if user
 
         user = User.new(user_params)
-        # binding.pry
         if user.save
           { 
             status: :created,
